@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 MAINTAINER ORKA Solutions s.r.o.
 
 ENV PYTHONUNBUFFERED 1

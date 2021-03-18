@@ -71,6 +71,15 @@ class Ingredient(models.Model):
         return self.name
 
 
+class RecipIngredient(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    value = models.DecimalField(max_digits=6, decimal_places=2)
+
+
 class Recipe(models.Model):
     """Recipe object"""
     user = models.ForeignKey(
@@ -81,7 +90,7 @@ class Recipe(models.Model):
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     link = models.CharField(max_length=255, blank=True)
-    ingredients = models.ManyToManyField('Ingredient')
+    ingredients = models.ManyToManyField('RecipIngredient')
     tags = models.ManyToManyField('Tag')
     image = models.ImageField(null=True, upload_to=recipe_image_file_path)
 

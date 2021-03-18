@@ -22,6 +22,8 @@ services:
 
   db:
     image: postgres:10-alpine
+    volumes:
+      - /opt/app-db1/:/var/lib/postgresql/data/
     environment:
         - POSTGRES_DB=app
         - POSTGRES_USER=postgres
