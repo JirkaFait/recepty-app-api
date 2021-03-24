@@ -105,9 +105,9 @@ class RecipIngredient(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    unit = models.ForeignKey(Units, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, related_name='ingredients', on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='ingredient')
+    unit = models.ForeignKey(Units, on_delete=models.CASCADE, related_name='unit')
     value = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
