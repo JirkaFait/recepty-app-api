@@ -68,7 +68,7 @@ class Units(models.Model):
     )
 
     def __str__(self):
-        return self.name + ' ' + self.title
+        return self.name
 
 
 class Ingredient(models.Model):
